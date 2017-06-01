@@ -10,10 +10,13 @@
 
   <body>
     <div class="container-fluid">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <%= render 'layouts/header' %>
-      <%= yield %>
-    </div>
+      <div class="container">
+        <div class="jumbotron">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div><!--jumbotron-->
+      </div><!--container-->
+    </div><!--container-fluid-->
   </body>
 </html>
