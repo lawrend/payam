@@ -11,7 +11,7 @@ class CorpsesController < ApplicationController
 
 	def create
 		@corpse = Corpse.create(corpse_params)
-		redirect_to "/player"
+		redirect_to root_path
 	end
 
 	def show
@@ -23,7 +23,7 @@ class CorpsesController < ApplicationController
 	def update
 		if @corpse.update(corpse_params)
       @corpse.counter += 1
-			redirect_to "/player"
+			redirect_to root_path
 		end
 	end
 

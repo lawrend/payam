@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602071157) do
+ActiveRecord::Schema.define(version: 20170602093156) do
 
   create_table "corpses", force: :cascade do |t|
-    t.integer  "counter",    default: 1, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index [nil], name: "index_corpses_on_style_id"
+    t.integer  "counter",        default: 1, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "style_id"
+    t.integer  "current_scribe"
+    t.index ["style_id"], name: "index_corpses_on_style_id"
   end
 
   create_table "lines", force: :cascade do |t|
@@ -24,8 +26,11 @@ ActiveRecord::Schema.define(version: 20170602071157) do
     t.boolean  "auth_public", default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index [nil], name: "index_lines_on_auth_id"
-    t.index [nil], name: "index_lines_on_corpse_id"
+    t.integer  "count"
+    t.integer  "corpse_id"
+    t.integer  "auth_id"
+    t.index ["auth_id"], name: "index_lines_on_auth_id"
+    t.index ["corpse_id"], name: "index_lines_on_corpse_id"
   end
 
   create_table "styles", force: :cascade do |t|

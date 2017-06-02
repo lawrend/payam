@@ -1,1 +1,29 @@
-Make a corpse here
+<div class="container">
+  <%= form_for(@corpse, :html => {:class => "form-horizontal"}) do |f| %>
+    <% if @corpse.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> stopped this corpse from going forward:</h2>
+        <ul>
+         <% @corpse.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+        </ul>
+       </div>
+    <% end %>
+
+    <div class="container">
+      <div class="form-group">
+        <div class="col-sm-3">
+          <%= f.collection_select(:style_id, Style.all, :id, :name, {:include_blank => true}) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="form-group">
+        <div class="col-sm-1">
+          <%= f.submit "Submit", class: "btn btn-default" %>
+        </div>
+      </div> <!-- form-group-->
+    </div>
+  <% end %>
