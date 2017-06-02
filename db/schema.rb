@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531102054) do
+ActiveRecord::Schema.define(version: 20170602071157) do
+
+  create_table "corpses", force: :cascade do |t|
+    t.integer  "counter",    default: 1, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index [nil], name: "index_corpses_on_style_id"
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.text     "text"
+    t.boolean  "auth_public", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index [nil], name: "index_lines_on_auth_id"
+    t.index [nil], name: "index_lines_on_corpse_id"
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
