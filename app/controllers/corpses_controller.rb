@@ -37,6 +37,6 @@ class CorpsesController < ApplicationController
     end
 
 	def corpse_params
-		params.require(:corpse).permit(:style_id, :counter)
+		params.require(:corpse).permit(:style_id, :counter, lines_attributes: [:text, :auth_id, :count])
   end
 end

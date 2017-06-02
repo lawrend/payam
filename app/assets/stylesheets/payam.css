@@ -1,3 +1,16 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  margin-top: 10px;
+  margin-bottom: 60px;
+  min-height: 1000px;
+  /*background-color: #333;
+  opacity: .7;
+  padding-bottom: 20px;
+  color: #fff;*/
+  text-align: auto;
+  /*text-shadow: 0 .5px 1px rgba(0,0,0,.5);*/
+}
+
 /*flash*/
 
 .alert-error {
