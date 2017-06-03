@@ -10,30 +10,30 @@
         </ul>
        </div>
     <% end %>
-
-    <div class="container">
-      <div class="form-group">
-        <div class="col-sm-3">
-          <%= f.collection_select(:style_id, Style.all, :id, :name, {:include_blank => true}) %>
-        </div>
-      </div>
-    </div>
-
     <% if @corpse.counter == 1 %>
       <div class="container">
-        <p>Write the first line. Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
-          <div class="form-group">
-            <%= f.fields_for :lines, Line.new do |line| %>
-              <%= line.label :text, class: "control-label" %>
-              <%= line.text_field :text, class: "form-control" %>
-              <% line.hidden_field :count, :value => @corpse.counter %>
-              <% line.hidden_field :auth_id, :value => current_user.id %>
-            <% end %>
+        <div class="form-group">
+          <div class="col-sm-3">
+            <%= f.label :style_id, "Pick a style for this thing!", :class => "form-control" %>
+            <%= f.collection_select(:style_id, Style.all, :id, :name, {:include_blank => true}) %>
           </div>
-
+        </div><!--form-group-->
       </div>
     <%end%>
 
+      <div class="container">
+        <p>Write the number <%= @corpse.counter %> line. Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
+          <div class="form-group">
+            <%= f.fields_for :lines, line do |line| %>
+              <%= line.label :text, class: "control-label" %>
+              <%= line.text_field :text, class: "form-control" %>
+              <%= line.hidden_field :corpse_id, :value => @corpse.id %>
+              <%= line.hidden_field :count, :value => @corpse.counter %>
+              <%= line.hidden_field :auth_id, :value => current_user.id %>
+            <% end %>
+          </div>
+      </div>
+  <%= f.hidden_field :current_scribe, :value => current_user.id %>
 
     <div class="container">
       <div class="form-group">

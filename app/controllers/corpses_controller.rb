@@ -11,6 +11,9 @@ class CorpsesController < ApplicationController
 
 	def create
 		@corpse = Corpse.create(corpse_params)
+    @corpse.counter += 1
+    @corpse.current_scribe = User.all.sample.id
+    @corpse.save
 		redirect_to root_path
 	end
 
@@ -23,6 +26,8 @@ class CorpsesController < ApplicationController
 	def update
 		if @corpse.update(corpse_params)
       @corpse.counter += 1
+      @corpse.current_scribe = User.all.sample.id
+      @corpse.save
 			redirect_to root_path
 		end
 	end
@@ -37,6 +42,6 @@ class CorpsesController < ApplicationController
     end
 
 	def corpse_params
-		params.require(:corpse).permit(:style_id, :counter, lines_attributes: [:text, :auth_id, :count])
+		params.require(:corpse).permit(:style_id, :counter, lines_attributes: [:text, :auth_id, :count, :corpse_id])
   end
 end

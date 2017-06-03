@@ -2,7 +2,6 @@ class LinesController < ApplicationController
 
   def new
     @line = Line.new
-    @line.corpse_id=@corpse.id
   end
 
   def create

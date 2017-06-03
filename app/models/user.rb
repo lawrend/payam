@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   validates_uniqueness_of :username
-  has_many :lines
+  has_many :lines, :foreign_key => "auth_id"
   has_many :corpses, through: :lines
 
 end
