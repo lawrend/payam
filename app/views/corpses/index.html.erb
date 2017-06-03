@@ -1,0 +1,3 @@
+<% @corpses.each do |corpse| %>
+  <p>Check out one in the <%= link_to "#{corpse.style.name}", corpse_path(corpse) %> style.</p>
+<% end %>

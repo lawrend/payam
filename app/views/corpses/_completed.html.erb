@@ -1,3 +1,25 @@
-<% Line.select {|line| line.corpse_id == @corpse.id}.sort_by {|lin| lin.count}.each do |li| %>
- <%= li.text %>
-<% end %>
+
+<p>
+  <% Line.select {|line| line.corpse_id == @corpse.id}.sort_by {|lin| lin.count}.each do |li| %>
+    <% case li.count %>
+      <% when 1 %>
+        <span style="color: #1100ff"><%= li.text %></span>
+      <% when 2 %>
+        <span style="color: #00ff22"><%= li.text %></span>
+      <% when 3 %>
+        <span style="color: #ff3300"><%= li.text %></span>
+      <% when 4 %>
+        <span style="color: #4400ff"><%= li.text %></span>
+      <% when 5 %>
+        <span style="color: #00ff55"><%= li.text %></span>
+      <% when 6 %>
+        <span style="color: #ff6600"><%= li.text %></span>
+      <% when 7 %>
+        <span style="color: #7700ff"><%= li.text %></span>
+      <% when 8 %>
+        <span style="color: #00ff88"><%= li.text %></span>
+      <% else %>
+        <span style="color: #111"><%= li.text %></span>
+    <% end %>
+  <% end %>
+</p>

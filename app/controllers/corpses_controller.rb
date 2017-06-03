@@ -25,9 +25,14 @@ class CorpsesController < ApplicationController
 
 	def update
 		if @corpse.update(corpse_params)
-      @corpse.counter += 1
-      @corpse.current_scribe = User.all.sample.id
-      @corpse.save
+      if @corpse.counter < 8
+        @corpse.counter += 1
+        @corpse.current_scribe = User.all.sample.id
+        @corpse.save
+      else
+        @corpse.current_scribe = nil
+        @corpse.save
+      end
 			redirect_to root_path
 		end
 	end
