@@ -1,0 +1,3 @@
+<% Line.select {|line| line.corpse_id == @corpse.id}.sort_by {|lin| lin.count}.each do |li| %>
+ <%= li.text %>
+<% end %>

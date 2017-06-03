@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_many :lines, :foreign_key => "auth_id"
   has_many :corpses, through: :lines
 
+  def waiting
+    Corpse.where(:current_scribe => self.id)
+  end
+
 end

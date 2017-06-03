@@ -5,3 +5,8 @@
 <% @player.corpses.each do |c| %>
   <%= link_to "#{c.style.name}", corpse_path(c) %><br>
 <% end %>
+<br>
+
+<% @player.waiting.each do |corpse| %>
+  <%= link_to "Ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>
+<% end %>
