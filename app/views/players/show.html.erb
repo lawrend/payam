@@ -3,7 +3,7 @@
 <p><%= link_to "New Corpse", new_corpse_path %></p>
 
 <% @player.corpses.each do |c| %>
-  <%= link_to "#{c.style.name}", corpse_path(c) %><br>
+  <%= link_to "#{c.style.name}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><br>
 <% end %>
 <br>
 

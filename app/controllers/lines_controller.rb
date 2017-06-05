@@ -1,4 +1,6 @@
 class LinesController < ApplicationController
+  before_action :check_word_count, only: [:create]
+  before_action :set_line, only: [:edit, :update, :show]
 
   def new
     @line = Line.new
@@ -24,5 +26,16 @@ class LinesController < ApplicationController
   def line_params
     params.require(:line).permit(:text, :count, :auth_id, :corpse_id, :auth_public)
   end
+
+  def check_word_count
+    if @line.text.scan(/[[:alpha:]]+/).count < 10
+      flash[:alert] = "That's too few words"
+      redirect_to corpse_path(Corpse.find(:id))
+    elsif @line.text.scan(/[[:alpha:]]+/).count > 20
+      flash[:alert] = "That's too many words"
+      redirect_to corpse_path(Corpse.find(:id))
+    end
+  end
+
 
 end

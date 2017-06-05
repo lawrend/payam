@@ -12,21 +12,25 @@
     <% end %>
     <% if @corpse.counter == 1 %>
       <div class="container">
-        <div class="form-group">
-          <div class="col-sm-3">
-            <%= f.label :style_id, "Pick a style for this thing!", :class => "form-control" %>
-            <%= f.collection_select(:style_id, Style.all, :id, :name, {:include_blank => true}) %>
-          </div>
+        <p>Pick a style for this thing, or make a new style if you wish</p>
+        <div class="form-group col-sm-4">
+            <%= f.collection_select(:style_id, Style.all, :id, :name, {:prompt => "--Select One--"}, :class => "form-control") %>
         </div><!--form-group-->
       </div>
+    <% else %>
+      <div class="container">
+        <p>The style of this Payam is <span style="color: #22dd55"><%= @corpse.style.name%>.</span>
     <%end%>
 
-      <div class="container">
-        <p>Write the number <%= @corpse.counter %> line. Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
+      <div class="container" style="border-top: 1px solid; padding-top: 20px">
+    <% if @corpse.counter != 1 %>
+      <p>So far, the Payam has <%= @corpse.counter - 1 %> authors, but you are number <%= @corpse.counter %>.</p>
+      <p>The previous author's last five words were:<em><blockquote style="font-size: 20px">...<%= @corpse.previous_five%></blockquote></em>
+    <% end %>
+        <p>Write the next line. Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
           <div class="form-group">
             <%= f.fields_for :lines, line do |line| %>
-              <%= line.label :text, class: "control-label" %>
-              <%= line.text_field :text, class: "form-control" %>
+              <%= line.text_field :text, class: "form-control", placeholder: "Think about your last 5 words as they will be what the next author sees..." %>
               <%= line.hidden_field :corpse_id, :value => @corpse.id %>
               <%= line.hidden_field :count, :value => @corpse.counter %>
               <%= line.hidden_field :auth_id, :value => current_user.id %>
