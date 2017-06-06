@@ -1,16 +1,73 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 60px;
   min-height: 1000px;
-  /*background-color: #333;
+  background-color: #acabaa;
   opacity: .7;
   padding-bottom: 20px;
-  color: #fff;*/
+  color: #fff;
   text-align: auto;
   /*text-shadow: 0 .5px 1px rgba(0,0,0,.5);*/
 }
 
+a {
+  color: #bbe233;
+}
+
+a:hover,
+a:focus {
+  color: #aaf344;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0 0 -150px;
+  font-size: 18px;
+}
+
+
+.jumbotron {
+  background-color: inherit;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #dfdfdf;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #6120d4;
+  border: 1px solid #fff;
+}
+
+.site-wrapper {
+ -webkit-box-shadow: inset 0 10px 25px -6px rgba(0,0,0,.5);
+         box-shadow: inset 0 10px 25px -6px rgba(0,0,0,.5);
+
+}
+
+.full {
+    background: url('illustration-lettres-de-guerre-de-jacques-vache_1-1463043997.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 /*flash*/
 
 .alert-error {
@@ -39,10 +96,4 @@ body {
  border-color: #111111;
  color: #468847;
  text-align: left;
-}
-
-.site-wrapper {
- -webkit-box-shadow: inset 0 10px 25px -6px rgba(0,0,0,.5);
-         box-shadow: inset 0 10px 25px -6px rgba(0,0,0,.5);
-
 }
