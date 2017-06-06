@@ -1,15 +1,18 @@
 <div class="container">
+  <% if @corpse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@corpse.errors.count, "error") %> stopped this Payam from going forward:</h2>
+      <ul>
+       <% @corpse.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+      </ul>
+     </div>
+  <% end %>
+</div>
+
+<div class="container">
   <%= form_for(@corpse, :html => {:class => "form-horizontal"}) do |f| %>
-    <% if @corpse.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "error") %> stopped this corpse from going forward:</h2>
-        <ul>
-         <% @corpse.errors.full_messages.each do |msg| %>
-           <li><%= msg %></li>
-         <% end %>
-        </ul>
-       </div>
-    <% end %>
     <% if @corpse.counter == 1 %>
       <div class="container">
         <p>Pick a style for this thing, or make a new style if you wish</p>
@@ -17,19 +20,29 @@
             <%= f.collection_select(:style_id, Style.all, :id, :name, {:prompt => "--Select One--"}, :class => "form-control") %>
         </div><!--form-group-->
       </div>
+
+      <div class="container">
+        <p>Also, provide a one-word title to guide the later authors</p>
+        <div class="form-group col-sm-4">
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
     <% else %>
       <div class="container">
         <p>The style of this Payam is <span style="color: #22dd55"><%= @corpse.style.name%>.</span>
+      </div>
     <%end%>
-
       <div class="container" style="border-top: 1px solid; padding-top: 20px">
-    <% if @corpse.counter != 1 %>
+    <% if @corpse.counter == 1 %>
+      <p> Write the first line.
+    <% else %>
       <p>So far, the Payam has <%= @corpse.counter - 1 %> authors, but you are number <%= @corpse.counter %>.</p>
       <p>The previous author's last five words were:<em><blockquote style="font-size: 20px">...<%= @corpse.previous_five%></blockquote></em>
+      <p>Write the next line.
     <% end %>
-        <p>Write the next line. Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
+         Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
           <div class="form-group">
-            <%= f.fields_for :lines, line do |line| %>
+            <%= f.fields_for :lines, @line do |line| %>
               <%= line.text_field :text, class: "form-control", placeholder: "Think about your last 5 words as they will be what the next author sees..." %>
               <%= line.hidden_field :corpse_id, :value => @corpse.id %>
               <%= line.hidden_field :count, :value => @corpse.counter %>
@@ -37,7 +50,7 @@
             <% end %>
           </div>
       </div>
-  <%= f.hidden_field :current_scribe, :value => current_user.id %>
+    <%= f.hidden_field :current_scribe, :value => current_user.id %>
 
     <div class="container">
       <div class="form-group">
@@ -47,3 +60,4 @@
       </div> <!-- form-group-->
     </div>
   <% end %>
+</div>

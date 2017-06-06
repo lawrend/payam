@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605031108) do
+ActiveRecord::Schema.define(version: 20170605085743) do
 
   create_table "corpses", force: :cascade do |t|
     t.integer  "counter",        default: 1, null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170605031108) do
     t.datetime "updated_at",                 null: false
     t.integer  "style_id"
     t.integer  "current_scribe"
+    t.string   "title"
     t.index ["style_id"], name: "index_corpses_on_style_id"
   end
 

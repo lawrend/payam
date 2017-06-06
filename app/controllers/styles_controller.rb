@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
   before_action :set_style, only: [:show, :update, :destroy, :edit]
+  validates :name, presence: true
 
   def index
     @styles = Style.all
