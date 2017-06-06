@@ -12,7 +12,7 @@ class Corpse < ApplicationRecord
     newln = Line.where(:corpse_id => self.id, :count => self.counter-1).first
     lstln = newln.text
     llstln = lstln.split
-    llstln[-6..-1].join(" ")
+    llstln[-5..-1].join(" ")
   end
 
   def send_to_next

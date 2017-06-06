@@ -2,7 +2,7 @@
 
 <p><%= link_to "New Payam", new_corpse_path %></p>
 
-<% @player.corpses.each do |c| %>
+<% @player.corpses.uniq.each do |c| %>
   <%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><br>
 <% end %>
 <br>
