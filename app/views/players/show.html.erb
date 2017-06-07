@@ -1,9 +1,9 @@
-<p>Hey there, <%= @player.username %>.</p>
+<p class="lead">Hey there, <%= @player.username %>.</p>
 
 <p><%= link_to "New Payam", new_corpse_path %></p>
 
 <% @player.corpses.uniq.each do |c| %>
-  <%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><br>
+  <p><%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %></p><br>
 <% end %>
 <br>
 
