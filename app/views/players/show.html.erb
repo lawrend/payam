@@ -1,12 +1,27 @@
-<p class="lead">Hey there, <%= @player.username %>.</p>
+<div class="headsup">
+  Hey there, <%= @player.username %>.
+</div><br><!--headsup-->
 
-<p><%= link_to "New Payam", new_corpse_path %></p>
-
-<% @player.corpses.uniq.each do |c| %>
-  <p><%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %></p><br>
-<% end %>
-<br>
-
-<% @player.waiting.each do |corpse| %>
-<p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>.</p>
-<% end %>
+<div class="container">
+  <div class="row flexy">
+    <div class="col-sm-4 align-self-start">
+      <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
+    </div>
+    <div class="col-sm-4 align-self-center">
+      <p>You might even want to start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</p>
+    </div>
+    <div class="col-sm-4 align-self-end">
+      <% if @player.corpses.empty? %>
+        <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
+      <% else %>
+        <% @player.corpses.uniq.each do |c| %>
+          <p><%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><p>
+        <% end %>
+        <br>
+        <% @player.waiting.each do |corpse| %>
+          <p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>.</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div><!--row-->
+</div><!--container-->
