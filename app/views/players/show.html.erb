@@ -8,5 +8,5 @@
 <br>
 
 <% @player.waiting.each do |corpse| %>
-  <%= link_to "Ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>
+<p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>.</p>
 <% end %>
