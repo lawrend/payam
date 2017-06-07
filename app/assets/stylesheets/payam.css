@@ -10,7 +10,7 @@ body {
   margin-bottom: 60px;
   min-height: 1000px;
   background-color: #acabaa;
-  opacity: .7;
+  opacity: .75;
   padding-bottom: 20px;
   color: #fff;
   text-align: auto;
@@ -62,11 +62,11 @@ a:focus {
 }
 
 .full {
-    background: url('illustration-lettres-de-guerre-de-jacques-vache_1-1463043997.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+  background: url('vache-text.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 /*flash*/
 
