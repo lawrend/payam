@@ -2,15 +2,16 @@
   Hey there, <%= @player.username %>.
 </div><br><!--headsup-->
 
-<div class="container">
-  <div class="row flexy">
-    <div class="col-sm-4 align-self-start">
+<div class="flex-container">
+    <div class="col" style="align-self: flex-start; flex-basis: 25%">
       <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
     </div>
-    <div class="col-sm-4 align-self-center">
+
+    <div class="col" style="align-self: center; flex-basis: 25%">
       <p>You might even want to start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</p>
     </div>
-    <div class="col-sm-4 align-self-end">
+
+    <div class="col" style="align-self: flex-end; flex-basis: 25%">
       <% if @player.corpses.empty? %>
         <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
       <% else %>
