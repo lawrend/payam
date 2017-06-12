@@ -1,5 +1,10 @@
 class Style < ApplicationRecord
   has_many :corpses
-  validates :name, presence: true, uniqueness: {:case_sensitive => false}, length: {:maximum => 1, tokenizer: lambda { |str| str.split(/\s+/) }, too_long: "Please choose a name that is only %{count} word."}
+  before_save validates :name, uniqueness: {:case_sensitive => false}, if:  :newest_style?
+
+  def newest_style?
+    self.id.nil?
+  end
+
 
 end

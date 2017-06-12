@@ -3,10 +3,10 @@ class Corpse < ApplicationRecord
   belongs_to :style
   has_many :users, through: :lines, source: :auth
   accepts_nested_attributes_for :lines
-  accepts_nested_attributes_for :style
-  validates :style, presence: true
+  accepts_nested_attributes_for :style, reject_if: proc { |attributes| attributes['name'].blank? }
   validates :title, presence: true, length: {maximum: 40}
   validates_with TitleValidator
+
 
 
   def previous_five

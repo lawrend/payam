@@ -13,7 +13,9 @@ class CorpsesController < ApplicationController
 
 	def create
     @corpse = Corpse.new(corpse_params)
-    if @corpse.valid?
+    if style_check
+      render :new
+    elsif @corpse.valid?
       @corpse.save
       @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
       @corpse.send_to_next
@@ -59,6 +61,14 @@ class CorpsesController < ApplicationController
 
 	def corpse_params
 		params.require(:corpse).permit(:style_id, :counter, :title, :current_scribe, lines_attributes: [:text, :auth_id, :count, :corpse_id], style_attributes: [:name])
+  end
+
+  def style_check
+    if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank?
+      @corpse.errors.add(:style, "must be selected or created--not both")
+    elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
+      @style = Style.new
+    end
   end
 
 end
