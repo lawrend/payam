@@ -3,8 +3,9 @@ class Corpse < ApplicationRecord
   belongs_to :style
   has_many :users, through: :lines, source: :auth
   accepts_nested_attributes_for :lines
-  validates :style_id, presence: true
-  validates :title, presence: true
+  accepts_nested_attributes_for :style, reject_if: proc {|att| att['name'].blank? }
+  validates :style, presence: true
+  validates :title, presence: true, length: {maximum: 40}
   validates_with TitleValidator
 
 
@@ -21,5 +22,9 @@ class Corpse < ApplicationRecord
   end
 
   private
+
+  def style=(name)
+    self.style = Style.find_or_create_by(name)
+  end
 
 end

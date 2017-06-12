@@ -8,6 +8,7 @@ class CorpsesController < ApplicationController
 	def new
 		@corpse = Corpse.new
     @line = Line.new
+    @style = Style.new
 	end
 
 	def create
@@ -57,7 +58,7 @@ class CorpsesController < ApplicationController
     end
 
 	def corpse_params
-		params.require(:corpse).permit(:style_id, :counter, :title, lines_attributes: [:text, :auth_id, :count, :corpse_id])
+		params.require(:corpse).permit(:style_id, :counter, :title, :current_scribe, lines_attributes: [:text, :auth_id, :count, :corpse_id], style_attributes: [:name])
   end
 
 end

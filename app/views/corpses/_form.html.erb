@@ -15,16 +15,39 @@
   <%= form_for(@corpse, :html => {:class => "form-horizontal"}) do |f| %>
     <% if @corpse.counter == 1 %>
       <div class="container">
-        <p>Pick a style for this thing, or make a new style if you wish</p>
-        <div class="form-group col-sm-4">
-            <%= f.collection_select(:style_id, Style.all, :id, :name, {:prompt => "--Select One--"}, :class => "form-control") %>
+        <p><span class="biginner">P</span>ick a style for this thing, or make a new style if you wish</p>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <!--<%= f.text_field :style_id, list: "styles_autocomplete", :placeholder => 'Click to select', :class => "form-control" %>
+              <datalist id="styles_autocomplete">
+              <% Style.all.each do |style| %>
+                <option value="<%= style.name %>">
+              <% end %>
+            </datalist>-->
+
+            <%= f.collection_select(:style_id, Style.all, :id, :name, {:prompt => "Select a Style"}, :class => "form-control") %>
+          </div>
+          <div class="col-sm-1">
+            <p>or...</p>
+          </div>
+          <div class="col-sm-4">
+            <%= f.fields_for :style, @style do |style_name| %>
+              <%= style_name.text_field :name, :placeholder => "Create a new one", :class => "form-control"%>
+            <% end %>
+
+          </div>
+
+          <!--<%= f.select(:style_id, Style.all.collect {|p| [ p.name, p.id ]} + [['Or create a new style', 'new']], {:prompt => 'Select a style'}, :class => "form-control") %>-->
+
+
         </div><!--form-group-->
+
       </div>
 
       <div class="container">
-        <p>Also, provide a one-word title to guide the later authors</p>
+        <p><span class="biginner">A</span>lso, provide a one-word title to guide the later authors</p>
         <div class="form-group col-sm-4">
-          <%= f.text_field :title, class: "form-control" %>
+          <%= f.text_field :title, :placeholder => "one-word title", class: "form-control" %><br>
         </div>
       </div>
     <% else %>
@@ -32,22 +55,30 @@
         <p>The style of this Payam is <span style="color: #22dd55"><%= @corpse.style.name%>.</span>
       </div>
     <%end%>
-      <div class="container" style="border-top: 1px solid; padding-top: 20px">
+      <div class="container" style="border-top: 1px dotted; border-color: #dab4e4; padding-top: 20px">
     <% if @corpse.counter == 1 %>
-      <p> Write the first line.
+      <p><span class="biginner">W</span>rite the first line.
     <% else %>
-      <p>So far, the Payam has <%= @corpse.counter - 1 %> authors, but you are number <%= @corpse.counter %>.</p>
+      <p><span class="biginner">S</span>o far, the Payam has <%= @corpse.counter - 1 %>
+        <% if @corpse.counter == 2 %>
+          author,
+        <% else %>
+          authors,
+        <% end %>
+         and you are number <%= @corpse.counter %>.</p>
       <p>The previous author's last five words were:<em><blockquote style="font-size: 20px">...<%= @corpse.previous_five%></blockquote></em>
       <p>Write the next line.
     <% end %>
-         Make it between 10-20 words. The next writer will only see the last 5 words you write.</p>
-          <div class="form-group">
-            <%= f.fields_for :lines, @line do |line| %>
-              <%= line.text_field :text, class: "form-control", placeholder: "Think about your last 5 words as they will be what the next author sees..." %>
-              <%= line.hidden_field :corpse_id, :value => @corpse.id %>
-              <%= line.hidden_field :count, :value => @corpse.counter %>
-              <%= line.hidden_field :auth_id, :value => current_user.id %>
-            <% end %>
+         Make it between 10-20 words. The next writer will only see the last 5 words you write.</p><br>
+         <div class="container">
+            <div class="form-group">
+              <%= f.fields_for :lines, @line do |line| %>
+                <%= line.text_field :text, class: "form-control", placeholder: "Think about your last 5 words as they will be what the next author sees..." %><br>
+                <%= line.hidden_field :corpse_id, :value => @corpse.id %>
+                <%= line.hidden_field :count, :value => @corpse.counter %>
+                <%= line.hidden_field :auth_id, :value => current_user.id %>
+              <% end %>
+            </div>
           </div>
       </div>
     <%= f.hidden_field :current_scribe, :value => current_user.id %>
