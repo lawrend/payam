@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Style.create(:name => "Funny")
-Style.create(:name => "Serious")
-Style.create(:name => "Sad")
+Style.create([
+  {:name => "Funny", :protected => "true"},
+  {:name => "Serious", :protected => true},
+  {:name => "Sad", :protected => true}
+])
 
 User.create([
   {:username => "wanda", :email => "wanda@wanda.com", :password => "testtest", :password_confirmation => "testtest"},

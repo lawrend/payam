@@ -6,6 +6,7 @@ class CorpsesController < ApplicationController
 	end
 
 	def new
+    clean_styles
 		@corpse = Corpse.new
     @line = Line.new
     @style = Style.new
@@ -68,6 +69,12 @@ class CorpsesController < ApplicationController
       @corpse.errors.add(:style, "must be selected or created--not both")
     elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
       @style = Style.new
+    end
+  end
+
+  def clean_styles
+    Style.all.each do |style|
+      style.delete if style.corpses.empty? && style.protected == false
     end
   end
 

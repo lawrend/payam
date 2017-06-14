@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605085743) do
+ActiveRecord::Schema.define(version: 20170614005709) do
 
   create_table "corpses", force: :cascade do |t|
     t.integer  "counter",        default: 1, null: false
@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 20170605085743) do
 
   create_table "styles", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "protected",  default: false
   end
 
   create_table "users", force: :cascade do |t|
