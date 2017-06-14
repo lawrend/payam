@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Style.create([
-  {:name => "Funny", :protected => "true"},
+  {:name => "Funny", :protected => true},
   {:name => "Serious", :protected => true},
   {:name => "Sad", :protected => true}
 ])
@@ -27,3 +27,16 @@ User.create([
   {:username => "unclesomething", :email => "unclesomething@unclesomething.com", :password => "testtest", :password_confirmation => "testtest"},
   {:username => "jodes", :email => "jodes@jodes.com", :password => "testtest", :password_confirmation => "testtest"}
   ])
+
+
+Line.create([
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 1, :auth_id => 1},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 2, :auth_id => 2},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 3, :auth_id => 3},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 4, :auth_id => 5},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 5, :auth_id => 6},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 6, :auth_id => 7},
+  {:text => "this is the text of the test that is tested while texting", :corpse_id => 1, :count => 7, :auth_id => 8},
+  ])
+
+Corpse.create(:id => 1, :title => "Test", :counter => 8, :style_id => 1, :current_scribe => 4)

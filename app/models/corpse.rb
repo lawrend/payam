@@ -6,6 +6,7 @@ class Corpse < ApplicationRecord
   accepts_nested_attributes_for :style, reject_if: proc { |attributes| attributes['name'].blank? }
   validates :title, presence: true, length: {maximum: 40}
   validates_with TitleValidator
+  scope :completed, -> { where(current_scribe => nil)}
 
 
 

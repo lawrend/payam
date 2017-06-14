@@ -18,10 +18,10 @@
         <% @player.corpses.uniq.each do |c| %>
           <p><%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><p>
         <% end %>
+      <% end %>
         <br>
-        <% @player.waiting.each do |corpse| %>
-          <p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}.", edit_corpse_path(corpse) %>.</p>
-        <% end %>
+      <% @player.waiting.each do |corpse| %>
+        <p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}", edit_corpse_path(corpse) %>.</p>
       <% end %>
     </div>
   </div><!--row-->
