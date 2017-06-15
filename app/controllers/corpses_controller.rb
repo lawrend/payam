@@ -2,7 +2,7 @@ class CorpsesController < ApplicationController
   before_action :set_corpse, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@corpses = Corpse.all
+		@corpses = Corpse.completed
 	end
 
 	def new
@@ -65,7 +65,7 @@ class CorpsesController < ApplicationController
   end
 
   def style_check
-    if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank?
+    if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank? 
       @corpse.errors.add(:style, "must be selected or created--not both")
     elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
       @style = Style.new
