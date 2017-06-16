@@ -46,7 +46,7 @@ body {
 
 /*custom link color*/
 a {
-  color: #1af;
+  color: #bc66ef;
 }
 
 a:hover,
@@ -60,7 +60,7 @@ a:focus {
 .btn-default:focus {
   color: #dfdfdf;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #6120d4;
+  background-color: #5f5faa;
   border: 1px solid #fff;
 }
 
@@ -101,7 +101,7 @@ a:focus {
 
 /*custom flash*/
 .alert-notice {
- background-color: #decdff;
+ background-color: #5f5faa;
  border-color: #111111;
  color: #111;
  text-align: left;
@@ -110,9 +110,30 @@ a:focus {
 .headsup {
   font-family: cursive;
   font-size: 44px;
+  color: #ddf;
 }
 
 .flex-container {
   display: flex;
   justify-content: space-between;
+}
+
+#light-purp {
+  color: #ddf;
+}
+
+#med-purp {
+  color: #99f;
+}
+
+#navbarCollapse a {
+  color: #ddf;
+}
+
+div.container h5, div.container h4, div.container h3 {
+  color: #ddf;
+}
+
+#navbarCollapse ul.dropdown-menu a {
+  color: #22f;
 }
