@@ -99,6 +99,14 @@ a:focus {
   border: thin solid red;
 }
 
+/*custom flash*/
+.alert-notice {
+ background-color: #decdff;
+ border-color: #111111;
+ color: #111;
+ text-align: left;
+}
+
 .headsup {
   font-family: cursive;
   font-size: 44px;

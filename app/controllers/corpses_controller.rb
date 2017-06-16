@@ -6,6 +6,7 @@ class CorpsesController < ApplicationController
 	end
 
 	def new
+    #remove styles that refer to no corpses
     clean_styles
 		@corpse = Corpse.new
     @line = Line.new
@@ -14,6 +15,7 @@ class CorpsesController < ApplicationController
 
 	def create
     @corpse = Corpse.new(corpse_params)
+    #check for both selection from dropdown and new entry in text field
     if style_check
       render :new
     elsif @corpse.valid?
@@ -39,6 +41,7 @@ class CorpsesController < ApplicationController
         @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
         @corpse.send_to_next
       else
+        #set current_scribe to nil so it goes to no one and the corpse is scoped to completed
         @corpse.current_scribe = nil
         @corpse.save
       end
@@ -65,7 +68,7 @@ class CorpsesController < ApplicationController
   end
 
   def style_check
-    if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank? 
+    if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank?
       @corpse.errors.add(:style, "must be selected or created--not both")
     elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
       @style = Style.new

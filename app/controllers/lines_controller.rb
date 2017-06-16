@@ -4,7 +4,6 @@ class LinesController < ApplicationController
 
   def new
     @line = Line.new
-    
   end
 
   def create
@@ -28,6 +27,7 @@ class LinesController < ApplicationController
     params.require(:line).permit(:text, :count, :auth_id, :corpse_id, :auth_public)
   end
 
+  #check if a line has between 10-20 words#
   def check_word_count
     if @line.text.scan(/[[:alpha:]]+/).count < 10
       flash[:alert] = "That's too few words"
