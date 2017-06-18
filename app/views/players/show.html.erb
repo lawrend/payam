@@ -6,24 +6,29 @@
   <div class="container" style="border-bottom: 1px solid; padding-bottom: 20px">
     <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
   </div>
-  <div class="flex-container">
-    <div class="col" style="flex-basis: 45%; padding-top: 20px">
-      <p>You might even want to start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</p>
-    </div>
-
-    <div class="col" style="flex-basis: 45%; padding-top: 20px">
-      <% if @player.corpses.empty? %>
-        <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
-      <% else %>
-        <% @player.corpses.uniq.each do |c| %>
-          <p><%= link_to "#{c.title}", corpse_path(c) %>  <%=link_to "delete", c, method: :delete, data: { confirm: "You sure?" } %><p>
+  <div class="flex-container" style="justify-content: space-around">
+    <h3 style="flex-basis: 40%; padding-top: 20px">You can start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</h3>
+    <div style="flex-basis: 40%; padding-top: 20px">
+    <% if @player.corpses.completed.empty? %>
+      <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
+    <% else %>
+      <h3>These are the completed payams that you worked on</h3>
+      <% @player.corpses.completed.uniq.each do |c| %>
+        <div class="flex-container" style="justify-content: space-around">
+          <p><%= link_to "#{c.title}", corpse_path(c) %></p>
+          <p><em><%=link_to "Delete", c, method: :delete, data: { confirm: "You sure?" } %></em></p>
+        </div><!--flex-container-->
         <% end %>
       <% end %>
-        <br>
-      <% @player.waiting.each do |corpse| %>
-        <p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}", edit_corpse_path(corpse) %>.</p>
+      <br>
+      <% if !@player.waiting.empty? %>
+        <h3>These payams need your help</h3>
+        <% @player.waiting.each do |corpse| %>
+          <ul>
+            <li><p>"<%=corpse.title%>" is in the <%=corpse.style.name%> style and it is <%= link_to "ready for line #{corpse.counter}", edit_corpse_path(corpse) %>.</p></li>
+          </ul>
+        <% end %>
       <% end %>
-    </div><!--col-->
-
-  </div><!--felx-container-->
-</div><!--container goudy-->
+    </div>
+  </div><!--flex-container-->
+</div><!--container-->
