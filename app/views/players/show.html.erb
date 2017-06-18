@@ -1,17 +1,17 @@
-<div class="flex-container headsup">
+<div class="container headsup">
   Hey there, <%= @player.username %>.
 </div><br><!--headsup-->
 
-<div class="flex-container goudy">
-    <div class="col" style="align-self: flex-start; flex-basis: 25%">
-      <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
-    </div>
-
-    <div class="col" style="align-self: center; flex-basis: 25%">
+<div class="container goudy">
+  <div class="container" style="border-bottom: 1px solid; padding-bottom: 20px">
+    <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
+  </div>
+  <div class="flex-container">
+    <div class="col" style="flex-basis: 45%; padding-top: 20px">
       <p>You might even want to start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</p>
     </div>
 
-    <div class="col" style="align-self: flex-end; flex-basis: 25%">
+    <div class="col" style="flex-basis: 45%; padding-top: 20px">
       <% if @player.corpses.empty? %>
         <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
       <% else %>
@@ -23,6 +23,7 @@
       <% @player.waiting.each do |corpse| %>
         <p>There is a payam called "<%=corpse.title%>" and it is <%= link_to "ready for line #{corpse.counter}", edit_corpse_path(corpse) %>.</p>
       <% end %>
-    </div>
-  </div><!--row-->
-</div><!--container-->
+    </div><!--col-->
+
+  </div><!--felx-container-->
+</div><!--container goudy-->
