@@ -65,9 +65,9 @@ a:focus {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #dfdfdf;
+  color: #115;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #5f5faa;
+  background-color: $first-comp;
   border: 1px solid #fff;
 }
 
@@ -108,7 +108,7 @@ a:focus {
 
 /*custom flash*/
 .alert-notice {
- background-color: #5f5faa;
+ background-color: #c0e699;
  border-color: #111111;
  color: #111;
  text-align: left;
@@ -127,6 +127,10 @@ a:focus {
 
 #first-comp {
   color: $first-comp;
+}
+
+#base-purp {
+  color: $base-purp;
 }
 
 #navbarCollapse a {
