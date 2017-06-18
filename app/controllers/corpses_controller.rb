@@ -2,11 +2,16 @@ class CorpsesController < ApplicationController
   before_action :set_corpse, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@corpses = Corpse.completed
+    #only displays corpses that are completed
+    if params[:style_id]
+      @corpses = Corpse.completed.where(:style_id => params[:style_id])
+    else
+		  @corpses = Corpse.completed
+    end
 	end
 
 	def new
-    #remove styles that refer to no corpses
+    #remove styles that do not refer to corpses
     clean_styles
 		@corpse = Corpse.new
     @line = Line.new

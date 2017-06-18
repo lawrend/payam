@@ -1,3 +1,9 @@
-<% @corpses.each do |corpse| %>
-  <p>Check out one in the <%= link_to "#{corpse.style.name}", corpse_path(corpse) %> style.</p>
+<% if @corpses.empty? %>
+  <p><em>None to show yet. Maybe <%= link_to "Start one of your own", new_corpse_path %>?</em></p>
+<% else %>
+
+  <% @corpses.each do |corpse| %>
+    <p>Check out one in the <%= link_to "#{corpse.style.name}", corpse_path(corpse) %> style.</p>
+  <% end %>
+
 <% end %>

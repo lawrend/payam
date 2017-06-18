@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :styles
+  resources :styles do
+    resources :corpses
+  end
   resources :lines
   resources :corpses, :path => "payams"
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -11,6 +13,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/about'
 
-  # keep user id out of the visible url 
+  # keep user id out of the visible url
   get 'player' => 'players#show'
 end
