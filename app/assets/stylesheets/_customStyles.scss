@@ -1,3 +1,10 @@
+/*colors*/
+
+$light-purp: #ddf;
+$base-purp: #edf;
+$first-comp: #e6ddff;
+$second-comp: #99e699;
+
 /*for cover background picture*/
 html {
   min-height: 100%;
@@ -46,12 +53,12 @@ body {
 
 /*custom link color*/
 a {
-  color: #bc66ef;
+  color: $second-comp;
 }
 
 a:hover,
 a:focus {
-  color: #2bf;
+  color: #5fcc5f;
 }
 
 /*custom default button*/
@@ -68,7 +75,7 @@ a:focus {
 .biginner {
   font-family: cursive;
   font-size: 46px;
-  color: #decdff;
+  color: $light-purp;
 }
 
 /*custom footer settings*/
@@ -110,7 +117,7 @@ a:focus {
 .headsup {
   font-family: cursive;
   font-size: 44px;
-  color: #ddf;
+  color: $base-purp;
 }
 
 .flex-container {
@@ -118,22 +125,22 @@ a:focus {
   justify-content: space-between;
 }
 
-#light-purp {
-  color: #ddf;
-}
-
-#med-purp {
-  color: #99f;
+#first-comp {
+  color: $first-comp;
 }
 
 #navbarCollapse a {
-  color: #ddf;
+  color: $light-purp;
+}
+
+#brando {
+  color: $light-purp;
 }
 
 div.container h5, div.container h4, div.container h3 {
-  color: #ddf;
+  color: $base-purp;
 }
 
 #navbarCollapse ul.dropdown-menu a {
-  color: #22f;
+  color: #5f5fcc;
 }
