@@ -2,8 +2,16 @@ class Line < ApplicationRecord
   belongs_to :auth, :class_name => "User"
   belongs_to :corpse, optional: true
   validates :text, presence: true
-  validate :word_count
+  validate :word_count, unless: Proc.new {|a| a.corpse != nil && a.corpse.current_scribe.nil? }
 
+  def lose_word
+    if self.text.split.length > 1
+      prev_line = self.text.split
+      prev_line.delete_at(rand(prev_line.length))
+      self.text = prev_line.join(" ")
+      self.save
+    end
+  end
 
   private
   def word_count

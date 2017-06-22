@@ -1,5 +1,5 @@
 class CorpsesController < ApplicationController
-  before_action :set_corpse, only: [:show, :edit, :update, :destroy]
+  before_action :set_corpse, only: [:show, :edit, :update, :destroy, :decompose]
 
 	def index
     #only displays corpses that are completed
@@ -8,6 +8,7 @@ class CorpsesController < ApplicationController
     else
 		  @corpses = Corpse.completed
     end
+    @all_other_corpses = Corpse.all - @corpses
 	end
 
 	def new
@@ -36,8 +37,15 @@ class CorpsesController < ApplicationController
 	def show
 	end
 
+  def decompose
+    @corpse.lines.each do |line|
+      line.lose_word
+    end
+    redirect_to corpse_path(@corpse)
+  end
+
 	def edit
-    @line = Line.new
+      @line = Line.new
 	end
 
 	def update
@@ -52,6 +60,7 @@ class CorpsesController < ApplicationController
       end
 			redirect_to root_path
     else
+      @line = Line.new(:text => corpse_params[:lines_attributes]["0"][:text])
       render :edit
 		end
 	end

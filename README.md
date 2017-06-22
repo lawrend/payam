@@ -26,4 +26,16 @@ After 8 scribes have written lines the completed PAYAM is viewable.
 
 * Deployment instructions
 
-* ...
+* ... TODO:
+  decompose method automatically run (but be able to run it now using a button)
+    It will:
+      remove one random word from each line of the completed payam until only one word in each line remains.
+
+  dada method
+    select 8 random lines from any payams and stitch them together into a new payam
+
+  admin role
+
+  no long allow uncompleted payams to be displayed
+
+  limit number of uncompleted payams?

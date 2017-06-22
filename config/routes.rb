@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     resources :corpses
   end
   resources :lines
-  resources :corpses, :path => "payams"
+  resources :corpses, :path => "payams" do
+    member do
+      post 'decompose'
+    end
+  end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :players do
     resources :corpses
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   get 'welcome/about'
+
 
   # keep user id out of the visible url
   get 'player' => 'players#show'

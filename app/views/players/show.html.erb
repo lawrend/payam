@@ -7,16 +7,16 @@
     <p>Your skills as a poet and a writer have never been more in need. There are these things called "Payams" that are floating about, needing words to give them life.</p>
   </div>
   <div class="flex-container" style="justify-content: space-around">
-    <h3 style="flex-basis: 40%; padding-top: 20px">You can start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</h3>
+    <h3 style="flex-basis: 40%; padding-top: 20px">Start a <%= link_to "new Payam", new_corpse_path %> and see for yourself.</h3>
     <div style="flex-basis: 40%; padding-top: 20px">
     <% if @player.corpses.completed.empty? %>
       <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
     <% else %>
-      <h3>These are the completed payams that you worked on</h3>
+      <h3>These are the completed payams that you worked on</h3><br>
       <% @player.corpses.completed.uniq.each do |c| %>
         <div class="flex-container" style="justify-content: space-around">
-          <p><%= link_to "#{c.title}", corpse_path(c) %></p>
-          <p><em><%=link_to "Delete", c, method: :delete, data: { confirm: "You sure?" } %></em></p>
+          <p style="font-size: 32px"><%= link_to "\"#{c.title}\"", corpse_path(c) %></p>
+          <p style="font-size: 32px"><em><%=link_to "Delete", c, method: :delete, data: { confirm: "You sure?" } %></em></p>
         </div><!--flex-container-->
         <% end %>
       <% end %>

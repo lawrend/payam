@@ -3,7 +3,8 @@
 $light-purp: #ddf;
 $base-purp: #edf;
 $first-comp: #e6ddff;
-$second-comp: #99e699;
+$second-comp: #5f90cc;
+$green-comp: #99e699;
 
 /*for cover background picture*/
 html {
@@ -58,7 +59,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #5fcc5f;
+  color: #7e5fcc;
 }
 
 /*custom default button*/
@@ -138,10 +139,6 @@ a:focus {
 
 #brando {
   color: $light-purp;
-}
-
-div.container h5, div.container h4, div.container h3 {
-  color: $base-purp;
 }
 
 #navbarCollapse ul.dropdown-menu a {
