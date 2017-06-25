@@ -33,12 +33,7 @@ class CorpsesController < ApplicationController
       @corpse.send_to_next
   		redirect_to root_path
     else
-      #if !corpse_params[:style_id].nil?
-      #  @style = Style.new
-      #  corpse_params[:style_attributes][:name] = nil
-      #else
       @style = Style.new(:name => corpse_params[:style_attributes][:name])
-      #end
       render :new
     end
 	end
