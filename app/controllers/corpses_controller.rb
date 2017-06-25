@@ -2,17 +2,19 @@ class CorpsesController < ApplicationController
   before_action :set_corpse, only: [:show, :edit, :update, :destroy, :decompose]
 
 	def index
-    #only displays corpses that are completed
+    #only display corpses of a particular style that are completed
     if params[:style_id]
       @corpses = Corpse.completed.where(:style_id => params[:style_id])
     else
+      #or all completed
 		  @corpses = Corpse.completed
     end
-    @all_other_corpses = Corpse.all - @corpses
+    #everything else
+    @all_other_corpses = Corpse.all - Corpse.completed
 	end
 
 	def new
-    #remove styles that do not refer to corpses
+    #remove orphaned custom styles
     clean_styles
 		@corpse = Corpse.new
     @line = Line.new
@@ -26,10 +28,17 @@ class CorpsesController < ApplicationController
       render :new
     elsif @corpse.valid?
       @corpse.save
+      #randomly select the next scribe
       @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
       @corpse.send_to_next
   		redirect_to root_path
     else
+      #if !corpse_params[:style_id].nil?
+      #  @style = Style.new
+      #  corpse_params[:style_attributes][:name] = nil
+      #else
+      @style = Style.new(:name => corpse_params[:style_attributes][:name])
+      #end
       render :new
     end
 	end
@@ -83,8 +92,11 @@ class CorpsesController < ApplicationController
 
   def style_check
     if !corpse_params[:style_id].blank? && !corpse_params[:style_attributes][:name].blank?
+      @corpse.style_id = corpse_params[:style_id]
+      @style = Style.new(:name => corpse_params[:style_attributes][:name])
       @corpse.errors.add(:style, "must be selected or created--not both")
     elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
+      @corpse.errors.add(:style, "add a style, ya goof")
       @style = Style.new
     end
   end
