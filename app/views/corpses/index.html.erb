@@ -2,20 +2,8 @@
   <p><em>None to show yet. Maybe <%= link_to "Start one of your own", new_corpse_path %>?</em></p>
 <% else %>
 
-  <% Style.all.each do |style| %>
-    <% if !style.corpses.empty? %>
-      <h2> <%= style.name %></h2>
-    <% else %>
-      <h3> sorry but there are no Payams in the <%= style.name %> style.</h3>
-    <% end %>
-  <% end %>
-
   <% @corpses.each do |corpse| %>
-    <p>Check out one in the <%= link_to "#{corpse.style.name}", corpse_path(corpse) %> style.</p>
-  <% end %>
-
-  <% @all_other_corpses.each do |corpse| %>
-    <p>"<%= corpse.title %>" is on round number <%= corpse.counter %> and is currently awaiting the contribution of the player <em><%= User.find(corpse.current_scribe).username %></em>.</p>
+    <p>Check out <span id="base-purp"><%= "#{corpse.title}" %></span> in the <%= link_to "#{corpse.style.name}", corpse_path(corpse) %> style.</p>
   <% end %>
 
 <% end %>

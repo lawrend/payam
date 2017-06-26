@@ -40,7 +40,7 @@
       </div>
     <% else %>
       <div class="container">
-        <p>The style of this Payam is <span style="color: #22dd55"><%= @corpse.style.name%></span>, and the title is <span style="color: #22dd55">"<%=@corpse.title%>"</span>.
+        <p>The style of this Payam is <span style="color: #45c467"><%= @corpse.style.name%></span>, and the title is <span style="color: #45c467">"<%=@corpse.title%>"</span>.
       </div>
     <%end%>
 
@@ -55,7 +55,7 @@
             authors,
           <% end %>
         and you are number <%= @corpse.counter %>.</p>
-        <p>The previous author's last five words were:<em><blockquote style="font-size: 20px">...<%= @corpse.previous_five%></blockquote></em></p>
+        <p>The previous author's last five words were:<em><blockquote id="base-purp" style="font-size: 20px">...<%= @corpse.previous_five%></blockquote></em></p>
         <p>Write the next line.
       <% end %>
 
