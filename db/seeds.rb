@@ -40,3 +40,28 @@ Line.create([
   ])
 
 Corpse.create(:id => 1, :title => "Test", :counter => 8, :style_id => 1, :current_scribe => 4)
+
+
+Line.create([
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 1, :auth_id => 1},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 2, :auth_id => 2},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 3, :auth_id => 3},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 4, :auth_id => 5},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 5, :auth_id => 6},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 6, :auth_id => 7},
+  {:text => "now we big time, big time big time hands up don't you see this big nine?", :corpse_id => 2, :count => 7, :auth_id => 8},
+  ])
+
+Corpse.create(:id => 2, :title => "jack", :counter => 8, :style_id => 2, :current_scribe => 4)
+
+Line.create([
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 1, :auth_id => 1},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 2, :auth_id => 2},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 3, :auth_id => 3},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 4, :auth_id => 5},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 5, :auth_id => 6},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 6, :auth_id => 7},
+  {:text => "where did she go? when did she find out? are you going to tell her when you see her?", :corpse_id => 3, :count => 7, :auth_id => 8},
+  ])
+
+Corpse.create(:id => 3, :title => "she", :counter => 8, :style_id => 3, :current_scribe => 4)
