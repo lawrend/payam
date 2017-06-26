@@ -16,7 +16,6 @@ class Corpse < ApplicationRecord
     llstln[-5..-1].join(" ")
   end
 
-  #
   def send_to_next
     self.counter += 1
     self.save

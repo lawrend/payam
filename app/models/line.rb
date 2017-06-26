@@ -1,7 +1,7 @@
 class Line < ApplicationRecord
   belongs_to :auth, :class_name => "User"
   belongs_to :corpse, optional: true
-  validates :text, presence: true
+  validates :text, presence: true, length: {maximum: 200}
   validate :word_count, unless: Proc.new {|a| a.corpse != nil && a.corpse.current_scribe.nil? }
 
   def lose_word
