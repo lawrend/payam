@@ -2,12 +2,13 @@
 
 PAYAM is an app wherein a user signs up and can create and participate in a Payam.
 
-A PAYAM is a kind of poem. In a PAYAM, the first user picks a one-word title, selects a Style from a list (or creates a new style), then writes the first line that is between 10 and 20 words long.
+A Payam is a kind of poem. In a PAYAM, the first user picks a one-word title, selects a Style from a list (or creates a new style), then writes the first line that is between 10 and 20 words long.
 
 A next "scribe" is selected at random from all users, who will then see only the title, the style, and last 5 words written by the previous scribe before adding their own line of 10-20 words.
 
-After 8 scribes have written lines the completed PAYAM is viewable.
+After 8 scribes have written lines the completed Payam is viewable by everyone.
 
+The decompose button will randomly and permanently remove one word from each line of a Payam. Each press of the button removes another word until there is only one word left in a line.
 
 * Ruby version
 2.3.0
@@ -27,15 +28,3 @@ After 8 scribes have written lines the completed PAYAM is viewable.
 * Deployment instructions
 
 * ... TODO:
-  decompose method automatically run (but be able to run it now using a button)
-    It will:
-      remove one random word from each line of the completed payam until only one word in each line remains.
-
-  dada method
-    select 8 random lines from any payams and stitch them together into a new payam
-
-  admin role
-
-  no long allow uncompleted payams to be displayed
-
-  limit number of uncompleted payams?

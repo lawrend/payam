@@ -10,12 +10,12 @@
   <div class="flex-container" style="justify-content: space-around">
     <div style="flex-basis: 60%; padding-top: 20px">
     <% if @player.corpses.completed.empty? %>
-      <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors</p>
+      <p>Keep your eyes open here for any Payams you need to work on and any of yours that have made their journey through seven more authors.</p>
     <% else %>
       <h2 style="border-bottom: solid 1px; padding-bottom: 15px">These are the completed payams that you worked on:</h2><br>
       <% @player.corpses.completed.uniq.each do |c| %>
         <div class="flex-container" style="justify-content: space-between">
-          <p style="font-size: 32px"><%= link_to "\"#{c.title}\"", corpse_path(c) %></p>
+          <p style="font-size: 36px"><%= link_to "#{c.title}", corpse_path(c) %></p>
           <p style="font-size: 32px"><em><%=link_to "Delete", c, method: :delete, data: { confirm: "You sure?" } %></em></p>
         </div><!--flex-container-->
         <% end %>
@@ -38,6 +38,7 @@
   </div>
 </div>
 <div class="container headsup">
+  <br>
   Yours Truly,<br>
   Payam
 </div>
