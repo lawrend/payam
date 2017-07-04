@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :styles do
-    resources :corpses
+    resources :corpses, :path => "payams"
   end
   resources :lines
   resources :corpses, :path => "payams" do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :players do
-    resources :corpses
+    resources :corpses, :path => "payams"
     resources :lines
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

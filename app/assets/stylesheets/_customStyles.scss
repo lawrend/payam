@@ -34,7 +34,10 @@ body {
   margin-bottom: 50px;
   min-height: 1000px;
   background-color: #333;
-  opacity: .8;
+  background-image: inherit;
+  background-size: inherit;
+  /*opacity: .8;
+  background-color: inherit;*/
   padding-bottom: 20px;
   color: #fff;
   text-align: auto;
@@ -123,7 +126,63 @@ a:focus {
 }
 
 .flex-container {
+  display: -webkit-flex;
   display: flex;
+  webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.flex-container-column {
+  display: -webkit-flex;
+  display: flex;
+  webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.markee {
+  text-shadow: 0px 0px 1px $second-comp;
+}
+
+.text-boxer {
+  padding: 15px;
+  background: rgba(68, 68, 85, .5);
+  box-shadow: inset 0px 0px 30px $base-purp, 0px 0px 30px #113;
+  border-radius: 10px;
+}
+
+.base-plaque {
+  justify-content: space-between;
+  border-radius: 15px 50px;
+  padding: 20px 20px 40px 20px;
+  background-color: rgba(68, 68, 85, .5);
+  box-shadow: inset 0px 0px 30px $base-purp, 0px 0px 30px #113;
+}
+
+.side-plaque {
+  border-radius: 15px 50px;
+  border: solid 1px;
+  padding: 10px 10px 20px 10px;
+  background-color: rgba(68, 68, 85, .75);
+  box-shadow: inset 0px 0px 5px $light-purp, 0px 0px 5px #113;
+
+}
+
+.top-plaque {
+  justify-content: space-around;
+  border-radius: 40px;
+  border-width: 1px 3px;
+  border-color: #edf;
+  border-style: dotted;
+  box-shadow: 0px 0px 2px #fff, 0px 0px 4px #edf;
+  padding-top: 10px;
+  background-color: rgba(34, 34, 51, .36);
+
+
+}
+
+#dubs {
+  font-size: 24px;
+  text-shadow: .2px 0px 0px $green-comp;
 }
 
 #first-comp {
