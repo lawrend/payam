@@ -75,6 +75,16 @@ a:focus {
   border: 1px solid #fff;
 }
 
+.btn-decomp,
+.btn-decomp:hover,
+.btn-decomp:focus {
+  color: #212104;
+  text-shadow: none;
+  background-color: rgba(85, 95, 16, .5);
+  border: 1px solid #111;
+  box-shadow: 0px 0px 150px 10px #414124;
+}
+
 /*(B)ig first letter of a line. You know, FANCY */
 .biginner {
   font-family: cursive;
@@ -113,7 +123,7 @@ a:focus {
 
 /*custom flash*/
 .alert-notice {
- background-color: #c0e699;
+ background-color: rgba(95, 201, 79, .2);
  border-color: #111111;
  color: #111;
  text-align: left;

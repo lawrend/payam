@@ -1,4 +1,4 @@
-<div class="flex-container goudy">
+<div class="flex-container goudy text-boxer" style="padding: 25px">
   <h1>About Payam</h1>
   <div class="container">
     <h3 id="base-purp">What is this thing?</h3>
@@ -22,7 +22,7 @@
       <p>It was late. I was out of ideas. It is what it is. Payam.</p>
     </div>
     <div style="padding-top: 25px">
-      <p><%= link_to "Home", "/" %></p>
+      <p><%= button_to "Home", root_path, {method: :get, class: "btn btn-default"} %></p>
     </div>
   </div>
 </div>
