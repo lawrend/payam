@@ -1,6 +1,6 @@
 class LinesController < ApplicationController
   before_action :check_word_count, only: [:create]
-  before_action :set_line, only: [:edit, :update, :show]
+  before_action :set_line, only: [:show]
 
   def new
     @line = Line.new
@@ -9,12 +9,6 @@ class LinesController < ApplicationController
   def create
     @line = Line.create(line_params)
     redirect_to root_path
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private

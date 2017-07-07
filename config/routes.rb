@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :styles do
     resources :corpses, :path => "payams"
   end
-  resources :lines
+  resources :lines, :except => [:update, :edit] 
   resources :corpses, :path => "payams" do
     member do
       post 'decompose'
