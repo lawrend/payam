@@ -3,12 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
-  # Virtual attribute for authenticating by either username or email
-  # This is in addition to a real persisted field like 'username'
   validates_uniqueness_of :username
   has_many :lines, :foreign_key => "auth_id"
   has_many :corpses, through: :lines
-
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
