@@ -30,6 +30,7 @@ class CorpsesController < ApplicationController
       @corpse.save
       #randomly select the next scribe
       @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
+      #send_to_next increases counter by 1 and saves
       @corpse.send_to_next
   		redirect_to root_path
     else
@@ -55,6 +56,7 @@ class CorpsesController < ApplicationController
 	def update
 		if @corpse.update(corpse_params)
       if @corpse.counter < 8
+        #select next user and increase counter by 1
         @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
         @corpse.send_to_next
       else
