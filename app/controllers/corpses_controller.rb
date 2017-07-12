@@ -92,9 +92,9 @@ class CorpsesController < ApplicationController
       @corpse.style_id = corpse_params[:style_id]
       @style = Style.new(:name => corpse_params[:style_attributes][:name])
       @corpse.errors.add(:style, "must be selected or created--not both")
-    elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
-      @corpse.errors.add(:style, "add a style, ya goof")
-      @style = Style.new
+    #elsif corpse_params[:style_id].blank? && corpse_params[:style_attributes][:name].blank?
+    #  @corpse.errors.add(:style, "add a style, ya goof")
+    #  @style = Style.new
     end
   end
 
