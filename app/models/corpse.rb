@@ -2,7 +2,7 @@ class Corpse < ApplicationRecord
   has_many :lines, dependent: :destroy
   belongs_to :style
   has_many :users, through: :lines, source: :auth
-  accepts_nested_attributes_for :lines
+  #accepts_nested_attributes_for :lines
   accepts_nested_attributes_for :style, reject_if: proc { |attributes| attributes['name'].blank? }
   validates :title, presence: true, length: {maximum: 40}
   validates_with TitleValidator
@@ -21,10 +21,20 @@ class Corpse < ApplicationRecord
     self.save
   end
 
+  def set_line_count
+    self.lines.last.count = self.counter
+  end
+
+  def lines_attributes=(line_attributes)
+    self.lines.build(:text => line_attributes["0"][:text], :count => self.counter, :auth_id => line_attributes["0"][:auth_id] ||= [])
+  end
+
   private
 
   def style=(name)
     self.style = Style.find_or_create_by(name)
   end
+
+
 
 end

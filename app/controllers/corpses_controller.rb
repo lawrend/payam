@@ -17,12 +17,15 @@ class CorpsesController < ApplicationController
     #remove orphaned custom styles
     clean_styles
 		@corpse = Corpse.new
-    @line = Line.new
+    @line = @corpse.lines.build
     @style = Style.new
 	end
 
 	def create
-    @corpse = Corpse.new(corpse_params)
+    @corpse_params = corpse_params
+    @corpse_params[:lines_attributes][:"0"][:auth_id] = current_user.id
+    @corpse = Corpse.new(@corpse_params)
+    #@corpse.lines.last.auth_id = current_user.id
     #check for both selection from dropdown and new entry in text field
     if style_check
       render :new
@@ -50,11 +53,14 @@ class CorpsesController < ApplicationController
   end
 
 	def edit
-      @line = Line.new
+      @line = @corpse.lines.build
 	end
 
 	def update
-		if @corpse.update(corpse_params)
+    @corpse_params = corpse_params
+    @corpse_params[:lines_attributes][:"0"][:auth_id] = current_user.id
+
+		if @corpse.update(@corpse_params)
       if @corpse.counter < 8
         #select next user and increase counter by 1
         @corpse.current_scribe = User.where.not(id: current_user.id).sample.id
@@ -84,7 +90,7 @@ class CorpsesController < ApplicationController
     end
 
 	def corpse_params
-		params.require(:corpse).permit(:style_id, :counter, :title, :current_scribe, lines_attributes: [:text, :auth_id, :count, :corpse_id], style_attributes: [:name])
+		params.require(:corpse).permit(:style_id, :counter, :title, :current_scribe, :lines_attributes => [:text, :corpse_id, :auth_id, :count], style_attributes: [:name])
   end
 
   def style_check

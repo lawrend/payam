@@ -14,6 +14,7 @@ class Line < ApplicationRecord
   end
 
   private
+
   def word_count
     @count = text.scan(/[[:alpha:]]+/).count
     if @count < 10
