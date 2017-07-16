@@ -16,7 +16,7 @@ The decompose button will randomly and permanently remove one word from each lin
 
 
 * Installation Instructions  
-Fork a copy to your local repository, clone that copy to your local machine using `git clone`, then hack away.
+Fork a copy to your local repository, clone that copy to your local machine using `git clone`, run `gem bundle install`, then hack away.
 
 Read up on [cloning github repos](https://help.github.com/articles/cloning-a-repository/).
 
