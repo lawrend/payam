@@ -13,18 +13,15 @@ The decompose button will randomly and permanently remove one word from each lin
 * Ruby version
 2.3.0
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+* Installation Instructions  
+Fork a copy to your local repository, clone that copy to your local machine using `git clone`, then hack away.
 
-* Database initialization
+Read up on [cloning github repos](https://help.github.com/articles/cloning-a-repository/).
 
-* How to run the test suite
+* Want to Contribute?
 
-* Services (job queues, cache servers, search engines, etc.)
+* License
 
-* Deployment instructions
-
-* ... TODO:
+Licensed under the MIT license.
