@@ -1,5 +1,9 @@
 # README
 
+***This app was built as an exercise. There is no JS by design - I forced myself to hack functionality within those constraints. 
+
+Consider it for what it is if/when you are ready to rip the thing to shreds :)***
+
 PAYAM is an app wherein a user signs up and can create and participate in a Payam.
 
 A Payam is a kind of poem. In a PAYAM, the first user picks a one-word title, selects a Style from a list (or creates a new style), then writes the first line that is between 10 and 20 words long.
