@@ -48,6 +48,8 @@ gem 'flexbox-rails'
 # gem 'capistrano-rails', group: :development
 # using good old Devise for authentication/roles
 gem 'devise'
+# using updated nokogiri
+gem 'nokogiri' ~> 1.8.1
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
